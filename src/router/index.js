@@ -3,9 +3,13 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const Home = () => import("../views/Home.vue");
 const Login = () => import("../views/Login.vue");
+const Home = () => import("../views/Home.vue");
 const Main = () => import("../components/Home.main.vue");
+const Nav2 = () => import("../components/Home.nav2.vue");
+const Nav3 = () => import("../components/Home.nav3.vue");
+const Nav4_5 = () => import("../components/Home.nav4.nav5.vue");
+const Nav4_6 = () => import("../components/Home.nav4.nav6.vue");
 
 const routes = [
   {
@@ -24,6 +28,22 @@ const routes = [
       {
         path: "/home/main",
         component: Main
+      },
+      {
+        path: "/home/nav2",
+        component: Nav2
+      },
+      {
+        path: "/home/nav3",
+        component: Nav3
+      },
+      {
+        path: "/home/nav4/nav5",
+        component: Nav4_5
+      },
+      {
+        path: "/home/nav4/nav6",
+        component: Nav4_6
       }
     ]
   }

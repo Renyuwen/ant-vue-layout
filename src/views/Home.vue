@@ -11,30 +11,31 @@
         class="menu"
         theme="dark"
         mode="inline"
-        :default-selected-keys="['1']"
+        @select="menuSelectHandle"
+        v-model="menuSelectedKeys"
       >
-        <a-menu-item key="1">
+        <a-menu-item key="/home/main">
           <a-icon type="user" />
           <span>nav 1</span>
         </a-menu-item>
-        <a-menu-item key="2">
+        <a-menu-item key="/home/nav2">
           <a-icon type="video-camera" />
           <span>nav 2</span>
         </a-menu-item>
-        <a-menu-item key="3">
+        <a-menu-item key="/home/nav3">
           <a-icon type="upload" />
           <span>nav 3</span>
         </a-menu-item>
-        <a-sub-menu key="4">
+        <a-sub-menu>
           <span slot="title">
             <icon-font type="iconjixiaoguanli" class="m-icon" />
             <span>nav 4</span>
           </span>
-          <a-menu-item key="5">
+          <a-menu-item key="/home/nav4/nav5">
             <a-icon type="upload" />
             <span>nav 5</span>
           </a-menu-item>
-          <a-menu-item key="6">
+          <a-menu-item key="/home/nav4/nav6">
             <icon-font type="icondog" class="m-icon" />
             <span>nav 6</span>
           </a-menu-item>
@@ -86,6 +87,7 @@ export default {
   data() {
     return {
       collapsed: false,
+      menuSelectedKeys: [],
       user: {
         name: ""
       }
@@ -93,8 +95,15 @@ export default {
   },
   created() {
     this.user.name = JSON.parse(localStorage.getItem("userInfo")).name;
+    this.menuSelectedKeys = [this.$route.path]; // 默认选中的menu项
   },
   methods: {
+    menuSelectHandle(menu) {
+      const key = menu.key;
+      if (this.$route.path !== key) {
+        this.$router.push(key);
+      }
+    },
     menuItemClick({ key }) {
       const self = this;
       if (key == "logout") {

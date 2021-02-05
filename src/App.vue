@@ -1,9 +1,9 @@
 <template>
-  <a-locale-provider>
+  <a-config-provider>
     <div id="app" :locale="zh_CN">
       <router-view />
     </div>
-  </a-locale-provider>
+  </a-config-provider>
 </template>
 
 <style scoped lang="less">
@@ -12,6 +12,10 @@
 
 <script>
 import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN";
+import moment from "moment";
+import "moment/locale/zh-cn";
+
+moment.locale("zh-cn");
 export default {
   data() {
     return {

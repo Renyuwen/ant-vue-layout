@@ -5,7 +5,9 @@ import router from "./router";
 import store from "./store";
 import Antd from "ant-design-vue";
 import "./styles/ant-theme.less";
-import "./registerServiceWorker";
+import { ConfigProvider } from "ant-design-vue"; //引用
+
+Vue.component(ConfigProvider.name, ConfigProvider); //注册
 
 Vue.use(Antd);
 
